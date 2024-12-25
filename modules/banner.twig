@@ -1,0 +1,134 @@
+<style>
+.section-title {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.5em;
+    line-height: 1.4;
+}
+
+#reseller-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 47px);
+    max-width: 1150px;
+    height: 80px;
+    padding: 17px;
+    margin: 0 auto;
+    margin-bottom: 14px;
+    border-radius: 15px;
+    color: #fff;
+    background: var(--color-2);
+    border: 1px solid var(--color-3);
+    box-shadow: 0 25px 50px rgba(10, 39, 83, 0.07);
+    text-decoration: none;
+    overflow: hidden;
+}
+
+#reseller-banner:before {
+    background-image: url(/images/reseller-banner-bg-md.webp);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    opacity: 0.2;
+}
+
+#reseller-banner .title {
+    font-size: 21px;
+    position: relative;
+    line-height: 23px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    margin: 0;
+    font-family: sans-serif !important;
+    width: 80%;
+    color: var(--color-4);
+    z-index: 1;
+}
+
+#reseller-banner .arrow {
+    right: 30px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 150px;
+    height: 32px;
+    border-radius: 16px;
+    color: var(--color-4);
+    background-color: var(--color-6);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: .88px;
+    transition: all 0.3s ease;
+}
+
+#reseller-banner .arrow:hover {
+    background-color: var(--color-7);
+    transform: translateX(5px);
+}
+
+#reseller-banner .arrow .icon {
+    display: none;
+}
+
+@media only screen and (max-width: 540px) {
+    #reseller-banner .title {
+        width: 85%;
+        font-size: 16px;
+    }
+    
+    #reseller-banner .arrow {
+        right: 20px;
+        width: 32px;
+    }
+
+    #reseller-banner .arrow .icon {
+        display: block;
+    }
+
+    #reseller-banner .arrow .arrow-text {
+        display: none;
+    }
+}
+
+.fade-in {
+    animation: FadeIn 1.5s linear;
+}
+
+@keyframes FadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+</style>
+
+{% if settings['panner_confirmation'] == 1 %}
+<div class="section-title style-gradient fade-in">
+    <a id="reseller-banner" href="{{ settings['banner_url'] }}" target="_blank">
+        <span class="title">
+            {% if user['lang'] == "ar" %}
+                {{ settings['banner_text_ar'] }}
+            {% else %}
+                {{ settings['banner_text_en'] }}
+            {% endif %}
+        </span>
+        <div class="arrow">
+            <span class="arrow-text">Detalhes</span>
+            <i class="icon ri-arrow-right-line"></i>
+        </div>
+    </a>
+</div>
+{% endif %}

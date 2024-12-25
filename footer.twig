@@ -1,0 +1,101 @@
+{{ footerCode }}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    var loadedScripts = new Set();
+
+
+    var originalCreateElement = document.createElement;
+    document.createElement = function(tagName) {
+        if (tagName === 'script') {
+            var scriptElement = originalCreateElement.call(document, tagName);
+
+        
+            Object.defineProperty(scriptElement, 'src', {
+                set: function(url) {
+                    if (loadedScripts.has(url)) {
+                        console.warn("Biblioteca já carregada: " + url);
+                    } else {
+                        loadedScripts.add(url);
+                        scriptElement.setAttribute('src', url);
+                    }
+                },
+                get: function() {
+                    return scriptElement.getAttribute('src');
+                }
+            });
+
+            return scriptElement;
+        }
+        return originalCreateElement.call(document, tagName);
+    };
+</script>
+
+{% for script in scriptList %}
+    <script type="text/javascript" src="{{ script }}"></script>
+{% endfor %}
+<script type="text/javascript" src="js/main.js?v={{ random(50, 100) }}"></script>
+
+
+<style>/* Tema Escuro para o Select2 */
+.select2-container--default .select2-selection--single {
+    background-color: #2c2c2c; /* Cor de fundo escura */
+    border: 1px solid #0088cc; /* Borda azul do Telegram */
+    border-radius: 4px;
+    height: 38px;
+    color: #ffffff; /* Texto branco */
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #ffffff;
+    line-height: 36px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 36px;
+}
+
+/* Fundo do Dropdown */
+.select2-container--default .select2-results__option {
+    background-color: #2c2c2c;
+    color: #ffffff;
+}
+
+/* Hover e Seleção */
+.select2-container--default .select2-results__option--highlighted {
+    background-color: #0088cc;
+    color: #ffffff;
+}
+
+/* Remover o Campo de Pesquisa */
+.select2-search--dropdown {
+    display: none;
+}
+
+/* Ajuste do Tamanho */
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding-left: 10px;
+}
+</style>
+<script>// Inicialização do Select2 com Tema Escuro e Sem Campo de Pesquisa
+$(document).ready(function() {
+    $('#neworder_category').select2({
+        minimumResultsForSearch: -1 // Remove o campo de pesquisa
+    });
+
+    $('#neworder_services').select2({
+        minimumResultsForSearch: -1 // Remove o campo de pesquisa
+    });
+});
+</script>
+<!-- Inclusão do CSS do Select2 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- Inclusão do jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-..." crossorigin="anonymous"></script>
+
+<!-- Inclusão do JS do Select2 -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
+</html>

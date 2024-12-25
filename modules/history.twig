@@ -1,0 +1,43 @@
+ <div class="col-lg-5">
+                    <div class="gcard-2 gcard-shadow fade-1 mb-4">
+                        <div class="gcard-header">
+                            <div class="row align-items-center">
+                                <div class="col d-flex align-items-center">
+                                    <div class="ch-g-ticon">
+                                        <div class="gcard-head-icon">
+                                            <i class="ri-flag-line"></i>
+                                        </div>
+                                    </div>
+                                    <div class="ch-text">
+                                        <h3 class="gcard-title">Histórico de Pagamentos</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gcard-body">
+                            {% if lastPaymentsList is not empty %}
+                                {% for payment in lastPaymentsList %}
+                                    <div class="payment-history-card">
+                                        <div class="payment-info">
+                                            <span class="payment-details">ID: {{ payment.id }}</span>
+                                            <span class="payment-details">Data: {{ payment.created_at }}</span>
+                                            <span class="payment-details">Método: {{ payment.payment_method }}</span>
+                                            <span class="payment-value">Valor: R$ {{ payment.amount|number_format(2, ',', '.') }}</span>
+                                            <span class="payment-details">Detalhes: {{ payment.payment_extra }}</span>
+                                        </div>
+                                        <div>
+                                        {% if settings['enable_receipt_code']  ==  2 %}      <a href="gerar?generate_pdf={{ payment['id'] }}" class="payment-button">Comprovante</a>      {% endif %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="text-center text-muted">Nenhum pagamento encontrado.</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+</div>
+

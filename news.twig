@@ -1,0 +1,44 @@
+{%  if settings['demo_mode'] == 1 %}
+{# ##################################################### TEMA SAM ######################################### #}
+<style>
+    .fixed-footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #f8f9fa;
+        border-top: 1px solid #dee2e6;
+        padding: 10px;
+        z-index: 9999; /* Adicionando um z-index maior */
+    }
+
+    .fixed-footer select {
+        width: 100%;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        appearance: none;
+    }
+</style>
+
+
+<div class="fixed-footer">
+    <h4 style="color:#000">TEMAS
+        <select id="themeDropdown" style="margin: 10px 0; font-size: 16px">
+            <option value="" selected disabled>ESCOLHA UM TEMA</option>
+            {% for thm in site['themes'] %}
+            <option value="/select-theme/{{thm['dirname']}}">{{thm['name']}}</option>
+            {% endfor %}
+        </select>
+    </h4>
+</div>
+
+<script>
+    document.getElementById('themeDropdown').addEventListener('change', function() {
+        var selectedTheme = this.value;
+        window.location.href = selectedTheme;
+    });
+</script>
+{# ##################################################### TEMA SAM ######################################### #}
+{% endif %}

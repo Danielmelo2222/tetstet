@@ -1,0 +1,71 @@
+<script>
+    $(document).ready(function() {
+        $("#payment_method").on('change', function() {
+            var selectedMethod = $(this).val();
+
+            if (selectedMethod == 21) {
+                $(".normal-payment").hide();
+                $(".custom-payment-content").hide();
+                $(".custom-payment-content-bkash").show();
+                $("#cpf").closest('.form-group').hide();
+                $("#amount").closest('.form-group').hide();
+                $("button[type='submit']").hide();
+            } else if (selectedMethod == 34) {
+                $(".normal-payment").hide();
+                $(".custom-payment-content-bkash").hide();
+                $(".custom-payment-content").show();
+                $("#cpf").closest('.form-group').hide();
+                $("#amount").closest('.form-group').hide();
+                $("button[type='submit']").hide();
+            } else {
+                $(".custom-payment-content").hide();
+                $(".custom-payment-content-bkash").hide();
+                $(".normal-payment").show();
+                $("#cpf").closest('.form-group').show();
+                $("#amount").closest('.form-group').show();
+                $("button[type='submit']").show();
+            }
+        });
+
+        $("#payment_method").trigger('change');
+    });
+
+    function handleOrderType(selectObject) {
+        var qrElement = document.getElementById("qr");
+        var ppqrElement = document.getElementById("ppqr");
+
+        if (selectObject.value == "14") {
+            qrElement.style.display = "block";
+            ppqrElement.style.display = "none";
+        } else if (selectObject.value == "114") {
+            qrElement.style.display = "none";
+            ppqrElement.style.display = "block";
+        } else {
+            qrElement.style.display = "none";
+            ppqrElement.style.display = "none";
+        }
+    }
+</script>
+<div class="fga mb-4 custom-payment-content" style="display:none" id="paymentContent34">
+    <label class="fla" for="amount">Instruções:</label>
+    <br>
+    <p>
+        {% for payment in paymentsList %}
+            {% if payment.id == 34 %}
+                {{ payment.content }}
+            {% endif %}
+        {% endfor %}
+    </p>
+</div>
+
+<div class="fga mb-4 custom-payment-content-bkash" style="display:none" id="paymentContent21">
+    <label class="fla" for="amount">Instruções:</label>
+    <br>
+    <p>
+        {% for payment in paymentsList %}
+            {% if payment.id == 21 %}
+                {{ payment.content }}
+            {% endif %}
+        {% endfor %}
+    </p>
+</div>

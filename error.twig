@@ -1,0 +1,96 @@
+{% set error_code = error_code|default(404) %}
+{% set error_messages = {
+    400: '400 - Solicitação Inválida (Bad Request)',
+    401: '401 - Não Autorizado (Unauthorized)',
+    403: '403 - Proibido (Forbidden)',
+    404: '404 - Página Não Encontrada (Not Found)',
+    500: '500 - Erro Interno do Servidor (Internal Server Error)',
+    502: '502 - Gateway Inválido (Bad Gateway)',
+    503: '503 - Serviço Indisponível (Service Unavailable)',
+    504: '504 - Tempo de Resposta Expirado (Gateway Timeout)'
+} %}
+{% set error_message = error_messages[error_code] is defined ? error_messages[error_code] : 'Erro Desconhecido' %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ error_message }}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Remixicon Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            font-family: 'Roboto Mono', monospace;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .highlight {
+            background: #ffe500;
+            position: absolute;
+            height: 100%;
+            width: 0;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .icon-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #fff;
+        }
+        .icon-link:hover {
+            text-decoration: underline;
+        }
+        .icon-link .ri-home-line {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h1 class="display-4 mb-4">Ops! Algo deu errado</h1>
+        <p id="error-message" class="position-relative d-inline-block">
+            {{ error_message }}
+            <span class="highlight"></span>
+        </p>
+        <div class="mt-4">
+            <a href="/" class="btn btn-outline-light me-3 icon-link">
+                <i class="ri-home-line"></i> Página Inicial
+            </a>
+        </div>
+    </div>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script>
+        function animateText() {
+            const errorMessage = document.querySelector("#error-message");
+            const highlight = document.querySelector(".highlight");
+            const textArray = errorMessage.innerText.trim().split("");
+            errorMessage.innerHTML = "";
+            textArray.forEach(char => {
+                const span = document.createElement("span");
+                span.innerText = char;
+                errorMessage.appendChild(span);
+            });
+            errorMessage.appendChild(highlight);
+            gsap.fromTo("#error-message span", {opacity: 0}, {opacity: 1, stagger: 0.05, duration: 0.5});
+            const errorMessageWidth = errorMessage.offsetWidth;
+            gsap.fromTo(highlight, {width: 0}, {width: errorMessageWidth, duration: textArray.length * 0.05, ease: "power2.out"});
+        }
+
+        animateText();
+        document.querySelector("#cb-replay").addEventListener("click", function() {
+            animateText();
+        });
+    </script>
+</body>
+</html>
