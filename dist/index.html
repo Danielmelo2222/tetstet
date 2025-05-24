@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INDEXBR.CLOUD CLONE</title>
+  <link href="output.css" rel="stylesheet">
+  <script>
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  </script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+
+  <header class="container mx-auto p-4 md:p-6 shadow-md dark:bg-gray-800">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <h1 class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-4 md:mb-0">INDEXBR.CLOUD CLONE</h1>
+      <nav class="mb-4 md:mb-0">
+        <ul class="flex flex-wrap justify-center space-x-3 sm:space-x-4 md:space-x-6">
+          <li><a href="#" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Products</a></li>
+          <li><a href="#" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Themes</a></li>
+          <li><a href="#" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Scripts</a></li>
+          <li><a href="#" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Support</a></li>
+          <li><a href="#" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">My Account</a></li>
+        </ul>
+      </nav>
+      <div class="flex items-center space-x-2">
+        <input type="search" placeholder="Search products..." class="p-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-shadow">
+        <button id="darkModeToggle" class="p-2 bg-blue-600 hover:bg-blue-700 dark:bg-yellow-400 dark:hover:bg-yellow-500 text-white dark:text-gray-900 rounded-lg transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden dark:inline" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto p-4 md:p-6">
+    <section id="hero" class="my-8 md:my-12 py-10 md:py-16 text-center bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-700 dark:to-indigo-800 rounded-xl shadow-xl text-white">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Power Up Your Digital Presence with Our Scripts & Themes!</h2>
+      <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Discover top-tier scripts, versatile themes, and powerful digital solutions, all crafted for excellence and ready to deploy.</p>
+      <button class="mt-4 px-8 py-3 bg-green-500 text-white text-lg font-semibold rounded-lg hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 transition-colors shadow-md hover:shadow-lg transform hover:scale-105">Explore Our Catalog</button>
+    </section>
+
+    <section id="products" class="my-8 md:my-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-gray-800 dark:text-gray-100">Featured Digital Assets</h2>
+      <div class="product-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <article class="product-item bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+          <img src="https://via.placeholder.com/300x200.png?text=SMM+Panel+Pro" alt="Ultimate SMM Panel Pro" class="w-full h-48 object-cover rounded-md mb-4">
+          <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">Ultimate SMM Panel Pro</h3>
+          <p class="text-lg font-bold text-blue-600 dark:text-blue-400 mb-3">$49.99</p>
+          <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow">The most advanced SMM panel script with robust features, API integration, and a sleek, responsive user interface. Perfect for resellers.</p>
+          <button class="w-full mt-auto px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors">Add to Cart</button>
+        </article>
+        <article class="product-item bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+          <img src="https://via.placeholder.com/300x200.png?text=Nova+Gaming+Theme" alt="Nova Gaming Theme" class="w-full h-48 object-cover rounded-md mb-4">
+          <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">Nova Gaming Theme</h3>
+          <p class="text-lg font-bold text-blue-600 dark:text-blue-400 mb-3">$59.00</p>
+          <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow">A dynamic and immersive WordPress theme for gaming communities, eSports teams, and game review portals. Highly customizable.</p>
+          <button class="w-full mt-auto px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors">Add to Cart</button>
+        </article>
+        <article class="product-item bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+          <img src="https://via.placeholder.com/300x200.png?text=ContentFlow+Importer" alt="ContentFlow Auto-Importer" class="w-full h-48 object-cover rounded-md mb-4">
+          <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">ContentFlow Auto-Importer</h3>
+          <p class="text-lg font-bold text-blue-600 dark:text-blue-400 mb-3">$29.50</p>
+          <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 flex-grow">Automate your content aggregation with this powerful script. Import articles, videos, and more from various sources effortlessly.</p>
+          <button class="w-full mt-auto px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors">Add to Cart</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="cta" class="my-8 md:my-12 py-10 md:py-16 bg-gray-100 dark:bg-gray-800 rounded-xl shadow-xl text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800 dark:text-gray-100">Get Exclusive Deals & Updates!</h2>
+      <p class="mb-8 text-lg text-gray-600 dark:text-gray-300 max-w-xl mx-auto">Subscribe to our newsletter to receive the latest news, special offers, and insights on new digital products directly in your inbox.</p>
+      <form id="newsletterForm" class="flex flex-col sm:flex-row justify-center items-center sm:space-x-2 max-w-lg mx-auto">
+        <input type="email" id="newsletterEmail" placeholder="Enter your email" class="p-3 border border-gray-300 rounded-lg w-full sm:w-2/3 mb-2 sm:mb-0 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-shadow">
+        <button type="submit" class="px-6 py-3 w-full sm:w-auto bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors">Subscribe</button>
+      </form>
+      <p id="newsletter-message" class="text-sm mt-3 h-5"></p> {/* Placeholder for messages */}
+    </section>
+  </main>
+
+  <footer class="container mx-auto p-4 md:p-6 mt-8 md:mt-12 border-t border-gray-200 dark:border-gray-700">
+    <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+      <p class="text-gray-600 dark:text-gray-400 mb-4 md:mb-0">&copy; 2023 INDEXBR.CLOUD CLONE. All rights reserved.</p>
+      <ul class="flex flex-wrap justify-center space-x-4">
+        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Terms of Service</a></li>
+        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Privacy Policy</a></li>
+        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact Us</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // Dark Mode Toggle Script (existing)
+    const htmlElement = document.documentElement;
+    const toggleButton = document.getElementById('darkModeToggle');
+
+    toggleButton.onclick = () => {
+      if (htmlElement.classList.contains('dark')) {
+        htmlElement.classList.remove('dark');
+        localStorage.theme = 'light';
+      } else {
+        htmlElement.classList.add('dark');
+        localStorage.theme = 'dark';
+      }
+    };
+  </script>
+
+  <script>
+    // Newsletter Email Validation Script (existing)
+    const newsletterForm = document.getElementById('newsletterForm');
+    const emailInput = document.getElementById('newsletterEmail');
+    const messageElement = document.getElementById('newsletter-message');
+
+    newsletterForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent actual submission
+
+      const emailValue = emailInput.value.trim();
+      const emailRegex = /^\S+@\S+\.\S+$/;
+
+      // Reset styles and message
+      emailInput.classList.remove('border-red-500', 'dark:border-red-500');
+      emailInput.classList.add('border-gray-300', 'dark:border-gray-600');
+      messageElement.textContent = '';
+      messageElement.classList.remove('text-red-500', 'dark:text-red-400', 'text-green-500', 'dark:text-green-400');
+
+
+      if (emailValue === '') {
+        messageElement.textContent = 'Email address cannot be empty.';
+        messageElement.classList.add('text-red-500', 'dark:text-red-400');
+        emailInput.classList.remove('border-gray-300', 'dark:border-gray-600');
+        emailInput.classList.add('border-red-500', 'dark:border-red-500');
+        emailInput.focus();
+        return;
+      }
+
+      if (!emailRegex.test(emailValue)) {
+        messageElement.textContent = 'Please enter a valid email address.';
+        messageElement.classList.add('text-red-500', 'dark:text-red-400');
+        emailInput.classList.remove('border-gray-300', 'dark:border-gray-600');
+        emailInput.classList.add('border-red-500', 'dark:border-red-500');
+        emailInput.focus();
+      } else {
+        messageElement.textContent = 'Thank you for subscribing!';
+        messageElement.classList.add('text-green-500', 'dark:text-green-400');
+        emailInput.value = ''; // Clear input on success
+        // Here you would typically send the data to a server
+        // For this example, we'll just log it and disable the form briefly
+        console.log('Email submitted:', emailValue);
+        // newsletterForm.querySelector('button[type="submit"]').disabled = true;
+        // setTimeout(() => {
+        //   newsletterForm.querySelector('button[type="submit"]').disabled = false;
+        //   messageElement.textContent = ''; // Clear message after a while
+        // }, 3000);
+      }
+    });
+  </script>
+</body>
+</html>
